@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EuroJackpot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="EuroJackpot.xsd">
+    <Apuesta>
+        <Numeros>
+            <Numero>23</Numero>
+            <Numero>1</Numero>
+            <Numero>12</Numero>
+            <Numero>38</Numero>
+            <Numero>19</Numero>
+        </Numeros>
+        <Soles>
+            <Numero>2</Numero>
+            <Numero>9</Numero>
+        </Soles>
+    </Apuesta>
+</EuroJackpot>

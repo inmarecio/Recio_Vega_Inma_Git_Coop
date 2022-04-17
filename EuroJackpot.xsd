@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="EuroJackpot">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Apuesta"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Apuesta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Numeros"/>
+        <xs:element ref="Soles"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Numeros">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="5" maxOccurs="5" name="Numero" type="NumerosApuesta" />
+      </xs:sequence>
+    </xs:complexType>
+    <xs:key name="NumeroUnico">
+      <xs:selector xpath="Numero" />
+      <xs:field xpath="." />
+    </xs:key>
+  </xs:element>
+  <xs:element name="Soles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="2" maxOccurs="2" name="Numero" type="NumerosSoles"/>
+      </xs:sequence>
+    </xs:complexType>
+    <xs:key name="SolUnico">
+      <xs:selector xpath="Numero" />
+      <xs:field xpath="." />
+    </xs:key>
+  </xs:element>
+  <xs:simpleType name="NumerosApuesta">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="50"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NumerosSoles">
+    <xs:restriction base="xs:positiveInteger">
+      <xs:minExclusive value="1"/>
+      <xs:maxExclusive value="10"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

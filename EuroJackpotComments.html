@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EuroJackpot</title>
+    <link rel="stylesheet"
+          href="http://vps456458.ovh.net/lm/resources/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="http://vps456458.ovh.net/lm/resources/node_modules/jquery/dist/jquery.js"></script>
+    <script src="http://vps456458.ovh.net/lm/resources/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="http://vps456458.ovh.net/lm/resources/cookies.js"></script>
+    <style>
+        .cajita {
+            border: 1px solid black;
+            width: 3em;
+            height: 3em;
+            margin-right: 1em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container py-2">
+    <h1 class="text-center">Apuesta EuroJackpot</h1>
+    <div class="row">
+        <h3>Números</h3>
+        <div id="num1" class="cajita">39</div>
+        <div id="num2" class="cajita"></div>
+        <div id="num3" class="cajita"></div>
+        <div id="num4" class="cajita"></div>
+        <div id="num5" class="cajita"></div>
+    </div>
+    <div class="row mt-3">
+        <h3>Soles</h3>
+        <div id="sol1" class="cajita"></div>
+        <div id="sol2" class="cajita"></div>
+    </div>
+</div>
+
+// script requerido para usar sus funciones
+<script src="./utilXML.js"></script>
+
+<script>
+    function EuroJackpot() {
+        // carga el xml en var doc
+        var doc = cargarDocumento("./EuroJackpot.xml");
+        // elementos a var root
+        var root = doc.documentElement; // Root = EuroJackpot
+        // console.log(root.querySelectorAll("Numeros Numero"))
+        // querySelectorAll toma todos los nodos hijos del nodo raiz (reduce codigo)
+        num1.innerText = root.querySelectorAll("Numeros Numero")[0].textContent;
+        num2.innerText = root.querySelectorAll("Numeros Numero")[1].textContent;
+        num3.innerText = root.querySelectorAll("Numeros Numero")[2].textContent;
+        num4.innerText = root.querySelectorAll("Numeros Numero")[3].textContent;
+        num5.innerText = root.querySelectorAll("Numeros Numero")[4].textContent;
+        sol1.innerText = root.querySelectorAll("Soles Numero")[0].textContent;
+        sol2.innerText = root.querySelectorAll("Soles Numero")[1].textContent;
+    }
+    // llamada a la funcion
+    EuroJackpot();
+
+
+    function EuroJackpot() {
+        // carga el xml en var doc
+        var doc = cargarDocumento("./EuroJackpot.xml");
+        // elementos a var root
+        var root = doc.documentElement; // Root = EuroJackpot
+        // nodosHijos de root a la var nodos
+        var nodos = root.childNodes;
+        // for para recorrer todos los nodos
+        for (var i = 0; i < nodos.length; i++) {
+            // se almacenan los nodos por posicion
+            var nodo = nodos[i];
+            // si el tipo de nodo es de tipo elemento(no texto)
+            if (nodo.nodeType == Node.ELEMENT_NODE) {
+                // num1.innerText reemplaza el texto de num1
+                // querySelectorAll da un listado de nodos,
+                // toma el contenido del nodo hijo según ruta indicada (Apuesta>Numeros>Numero)
+                num1.innerText = nodo.querySelectorAll("Numeros Numero")[0].textContent;
+                num2.innerText = nodo.querySelectorAll("Numeros Numero")[1].textContent;
+                num3.innerText = nodo.querySelectorAll("Numeros Numero")[2].textContent;
+                num4.innerText = nodo.querySelectorAll("Numeros Numero")[3].textContent;
+                num5.innerText = nodo.querySelectorAll("Numeros Numero")[4].textContent;
+                sol1.innerText = nodo.querySelectorAll("Soles Numero")[0].textContent;
+                sol2.innerText = nodo.querySelectorAll("Soles Numero")[1].textContent;
+            }
+        }
+    }
+    // llamada a la funcion
+    EuroJackpot();
+
+    /* usando nodo.getElementsByTagName tendria que hacer un
+       for para recorrer apuesta, y dentro de este for
+       for para recorrer Numeros
+       for para recorrer Soles
+    */
+
+</script>
+</body>
+</html>
